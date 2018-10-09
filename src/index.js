@@ -8,15 +8,15 @@ import * as serviceWorker from './serviceWorker';
 
 const Root = () => (
     <Switch>
-      <Route exact path="/" render={() => <App />} />
       <Route path="/about" render={() => <div>ABOUT</div>} />
+      <Route exact path="/" component={() => <App />} />
     </Switch>
   );
   
   const App2 = withRouter(withAnalytics(Root));
   
   const AppWithRouter = () => (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <App2 />
     </BrowserRouter>
   );

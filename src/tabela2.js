@@ -91,7 +91,7 @@ function getDistFromBottom () {
 
 document.addEventListener('scroll', function() {
     let distToBottom = getDistFromBottom();
-    if (distToBottom > 0 && distToBottom <= 200) { // Near end;
+    if (distToBottom > 0 && distToBottom <= 1000) { // Near end;
        
     }
 });
@@ -136,7 +136,7 @@ class Tabela2 extends React.Component {
         // Track month loading
         let trackAction = dateIn.getFullYear()+"-"+(dateIn.getMonth()+1);
         console.log(trackAction);
-        trackEvent({ category: 'Navigation', action: trackAction  });
+        trackEvent('Navigation', trackAction, 'label1');
          
      }
 
