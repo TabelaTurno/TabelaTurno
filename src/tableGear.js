@@ -102,6 +102,45 @@
   F F 0 8 16
   F 8 0 F 16`;
 
+tableOpts["Reduc23"] = 
+`I II III IV V
+  15 7 F F 23
+  15 F 7 F 23
+  15 23 7 F F
+  F 23 7 15 F
+  7 F 23 15 F
+  7 F 23 15 F
+  7 F 23 15 F
+  7 F F 23 15
+  F 7 F 23 15
+  23 7 F F 15
+  23 7 15 F F
+  F 23 15 F 7
+  F 23 15 F 7
+  F 23 15 F 7
+  F F 23 15 7
+  7 F 23 15 F
+  7 F F 15 23
+  7 15 F F 23
+  23 15 F 7 F
+  23 15 F 7 F
+  23 15 F 7 F
+  F 23 15 7 F
+  F 23 15 F 7
+  F F 15 23 7
+  15 F F 23 7
+  15 F 7 F 23
+  15 F 7 F 23
+  15 F 7 F 23
+  23 15 7 F F
+  23 15 F 7 F
+  F 15 23 7 F
+  F F 23 7 15
+  F 7 F 23 15
+  F 7 F 23 15
+  F 7 F 23 15`;
+
+
 var structTabela = {
     tableName: "Refap", 
     tableLink: "refap23", 
