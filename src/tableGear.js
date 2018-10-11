@@ -64,6 +64,44 @@
   F F 23 7 15
   F 7 23 F 15`;
 
+    tableOpts["Refap0"] = 
+` G1 G2 G3 G4 G5
+  F 8 0 16 F
+  0 8 F 16 F
+  0 F 8 16 F
+  0 16 8 F F
+  0 16 8 F F
+  F 16 8 F 0
+  8 16 F F 0
+  8 F 16 F 0
+  8 F 16 0 F
+  F F 16 0 8
+  16 F F 0 8
+  16 F F 0 8
+  16 0 F F 8
+  16 0 F 8 F
+  F 0 F 8 16
+  F F 0 8 16
+  F 8 0 F 16
+  F 8 0 16 F
+  F 8 0 16 F
+  0 8 F 16 F
+  0 F 8 16 F
+  0 16 8 F F
+  F 16 8 F 0
+  8 16 F F 0
+  8 F 16 F 0
+  8 F 16 F 0
+  8 F 16 0 F
+  F F 16 0 8
+  16 F F 0 8
+  16 0 F F 8
+  16 0 F 8 F
+  F 0 F 8 16
+  F 0 F 8 16
+  F F 0 8 16
+  F 8 0 F 16`;
+
 var structTabela = {
     tableName: "Refap", 
     tableLink: "refap23", 
