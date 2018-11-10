@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/TabelaTurno/static/js/runtime~main.f9fd193f.js"
   },
   {
-    "revision": "6edcc1a1193945ad47bc",
-    "url": "/TabelaTurno/static/js/main.6edcc1a1.chunk.js"
+    "revision": "ada5092f75adcb4e5c36",
+    "url": "/TabelaTurno/static/js/main.ada5092f.chunk.js"
   },
   {
     "revision": "9a24882bc93c8cbabbb1",
     "url": "/TabelaTurno/static/js/1.9a24882b.chunk.js"
   },
   {
-    "revision": "6edcc1a1193945ad47bc",
+    "revision": "ada5092f75adcb4e5c36",
     "url": "/TabelaTurno/static/css/main.ec406eba.chunk.css"
   },
   {
-    "revision": "c83ee4e18457e524b4015db9bcd05fb0",
+    "revision": "bbe06f93e11cbbdd18666fa32b71e158",
     "url": "/TabelaTurno/index.html"
   }
 ];
