@@ -107,7 +107,7 @@ class Tabela2 extends React.Component {
         const { month, tabela } = this.props;
 
         tabelaGear.populateTableDate(tabela);
-        const dateIn = new Date(2020,8,2);
+        const dateIn = new Date();
         const days = tabelaGear.getMonthScales(dateIn);
 
         let beforeFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
