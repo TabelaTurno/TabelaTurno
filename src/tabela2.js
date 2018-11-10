@@ -107,7 +107,7 @@ class Tabela2 extends React.Component {
         const { month, tabela } = this.props;
 
         tabelaGear.populateTableDate(tabela);
-        const dateIn = new Date();
+        const dateIn = new Date(2020,8,2);
         const days = tabelaGear.getMonthScales(dateIn);
 
         let beforeFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
@@ -127,7 +127,7 @@ class Tabela2 extends React.Component {
 
     tick()   {
         const dateIn = this.state.actualDay;
-        let nextFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()+1, 1);
+        let nextFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()+1, 1, 8,0,0); // 
         let nextMonthScale = tabelaGear.getMonthScales(nextFirstMounthDay);
         let newMonthsObj = this.state.monthsTRs;
         newMonthsObj.push(monthTRsComplete(nextMonthScale));
@@ -136,7 +136,7 @@ class Tabela2 extends React.Component {
         // Track month loading
         let trackAction = dateIn.getFullYear()+"-"+(dateIn.getMonth()+1);
         console.log(trackAction);
-        trackEvent('Navigation', trackAction, 'label1');
+        trackEvent('Navigation', trackAction, 'Version2');
          
      }
 
@@ -146,13 +146,16 @@ class Tabela2 extends React.Component {
             let distToBottom = getDistFromBottom();
             //console.log(distToBottom);
             if (distToBottom > 0 && distToBottom <= 1400) { // Near end;
-               console.log('dentro do reac');
+               //console.log('dentro do reac');
                extTick();
             }
         });
     
         let timer = setTimeout(function () {
-            window.scrollTo(0, document.getElementsByClassName("tdToday")[0].offsetTop - 88); 
+            let elementToday = document.getElementsByClassName("tdToday");
+            if (elementToday > 0) { 
+                window.scrollTo(0, elementToday[0].offsetTop - 88); 
+            }
         }, 100);
         
     }
