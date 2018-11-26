@@ -152,11 +152,14 @@ class Tabela2 extends React.Component {
         });
     
         let timer = setTimeout(function () {
+            extTick();
             const elementToday = document.getElementsByClassName("tdToday");
             if (elementToday.length > 0) { 
                 window.scrollTo(0, elementToday[0].offsetTop - 88); 
             }
+            
         }, 100);
+
         
     }
 
