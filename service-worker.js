@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/TabelaTurno/precache-manifest.ac3c6143bd929a9d5a15819800826a66.js"
+  "/TabelaTurno/precache-manifest.7f64dbe6a6c1e559c83db95c1ab59974.js"
 );
 
 workbox.clientsClaim();
