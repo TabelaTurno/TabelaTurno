@@ -7,7 +7,8 @@
 </p>
 
 Small Link: [https://tabelaturno.github.io](https://tabelaturno.github.io?utm_source=github_READMEmd)
-Small Link: [https://tabelaturno.github.io/TabelaTurno](https://tabelaturno.github.io/TabelaTurno?utm_source=github_READMEmd)
+
+Original Link: [https://tabelaturno.github.io/TabelaTurno](https://tabelaturno.github.io/TabelaTurno?utm_source=github_READMEmd)
 
 This is the second version, using reactjs library. The project is under development.
 
