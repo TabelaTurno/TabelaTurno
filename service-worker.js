@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/TabelaTurno/precache-manifest.fcf8d17d7f808f0d9ae91b58326a6e73.js"
+  "/TabelaTurnoRefap/precache-manifest.a1864aab596b76a23bdde58454623d0d.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/TabelaTurno/index.html", {
+workbox.routing.registerNavigationRoute("/TabelaTurnoRefap/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
