@@ -1,8 +1,7 @@
 import React from 'react';
-import classNames from 'classnames';
-import PropTypes, { func } from 'prop-types';
 import tabelaGear from './tableGear';
-import { trackUser, trackEvent} from './analytics';
+import trackEvent from './analytics';
+
 
 
 
@@ -20,9 +19,9 @@ function DateToStringFormated(date) {
 }
 
 function isSameDay(dateToCheck, dateToCheck2) {
-    return (dateToCheck.getDate() == dateToCheck2.getDate() 
-        && dateToCheck.getMonth() == dateToCheck2.getMonth()
-        && dateToCheck.getFullYear() == dateToCheck2.getFullYear());
+    return (dateToCheck.getDate() === dateToCheck2.getDate() 
+        && dateToCheck.getMonth() === dateToCheck2.getMonth()
+        && dateToCheck.getFullYear() === dateToCheck2.getFullYear());
 }
 
 function isToday(dateToCheck) {
@@ -43,8 +42,12 @@ const styleClassWeekDay = function(inProp) {
 const styleClassToday = function(inProp) {
     return isToday(inProp) ? "tdToday": "";
 }
-
-const yearTD = (day) => <th className={'tdDate'}>{day.getFullYear()}</th>;
+const eventClick = function(inLog) {
+    console.log("Click:" + inLog);
+    trackEvent('Click', inLog, 'label2');
+    return true;
+}
+const yearTD = (day) => <th className={'tdDate'} onClick={() => eventClick("Ano"+day.getFullYear())}>{day.getFullYear()}</th>;
 const weekDayTD = (day) => {           
     let wd = day.getDay();
     let weekLabel = weekDay[wd].toUpperCase();
@@ -57,7 +60,7 @@ const dayTDfunc = (day) =>
             );
 const groupsTD = (groups) => 
     groups.map((groupName, i) =>
-        <th key={i}>{groupName}</th>
+        <th key={i} onClick={() => eventClick("Grupo "+groupName)}>{groupName}</th>
     );
 const daysTR = (daysIn) => daysIn.map((day, i) =>
     <tr key={i} className={[styleClassWeekDay(day.day), 'trTable'].join(' ')}>
@@ -72,7 +75,7 @@ const monthTRHeader = (objMonthScales) =>
     (   
         <tr className={'trHead'}>
             {yearTD(objMonthScales[0].day)}
-            <th></th> 
+            <th>&nbsp;</th> 
             {groupsTD(objMonthScales[0].groups)} 
         </tr> 
         
@@ -104,10 +107,10 @@ class Tabela2 extends React.Component {
     constructor(props) {
         super(props);
         
-        const { month, tabela } = this.props;
+        const { month, tableName } = this.props;
 
-        tabelaGear.populateTableDate(tabela);
-        const dateIn = new Date();
+        tabelaGear.populateTableDate(tableName);
+        const dateIn = new Date(); // GetToday
         const days = tabelaGear.getMonthScales(dateIn);
 
         let beforeFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
@@ -115,28 +118,28 @@ class Tabela2 extends React.Component {
 
         
         this.state = { 
-            tableInput: tabela,
+            tableInput: tableName,
             dayOne: dateIn,
             actualDay: dateIn,
             monthsTRs: [monthTRsComplete(daysbefore), monthTRsComplete(days)],
         }
         //Load more 1 month
-        //const extTick = this.tick.bind(this);
-        //extTick(); // BUG TWO MOUNTS
+        const extTick = this.tick.bind(this);
+        extTick();
     }
 
     tick()   {
         const dateIn = this.state.actualDay;
-        let nextFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()+1, 1, 8,0,0); // 
+        let nextFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()+1, 1);
         let nextMonthScale = tabelaGear.getMonthScales(nextFirstMounthDay);
         let newMonthsObj = this.state.monthsTRs;
         newMonthsObj.push(monthTRsComplete(nextMonthScale));
         this.setState({actualDay: nextFirstMounthDay, monthsTRs: newMonthsObj });
         
         // Track month loading
-        let trackAction = dateIn.getFullYear()+"-"+(dateIn.getMonth()+1);
-        console.log(trackAction);
-        trackEvent('Navigation', trackAction, 'Version2');
+        //let trackAction = dateIn.getFullYear()+"-"+(dateIn.getMonth()+1);
+        //console.log(trackAction);
+        //trackEvent('Navigation', trackAction, 'label1');
          
      }
 
@@ -146,29 +149,25 @@ class Tabela2 extends React.Component {
             let distToBottom = getDistFromBottom();
             //console.log(distToBottom);
             if (distToBottom > 0 && distToBottom <= 1400) { // Near end;
-               //console.log('dentro do reac');
+               console.log('dentro do reac');
                extTick();
             }
         });
     
         let timer = setTimeout(function () {
-            extTick();
-            const elementToday = document.getElementsByClassName("tdToday");
-            if (elementToday.length > 0) { 
-                window.scrollTo(0, elementToday[0].offsetTop - 88); 
-            }
-            
-        }, 100);
-
+            window.scrollTo(0, document.getElementsByClassName("tdToday")[0].offsetTop - 135); //era 88 
+        }, 50);
         
     }
 
 
-    render() {        
+    render() {  
         return ( 
+            /* <div className="tbContainer">*/
             <table className={'tbMain'}>
                 {tBodyTable(this.state.monthsTRs)}
             </table>
+            /*</div>*/
         )
     }
 }

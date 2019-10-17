@@ -26,7 +26,7 @@
   F 8 8 8
   8 8 8 8`;
 
-    tableOpts["Refap23"] = 
+    tableOpts["Refap"] = 
 ` G1 G2 G3 G4 G5
   23 7 F 15 F
   23 7 F 15 F
@@ -64,82 +64,82 @@
   F F 23 7 15
   F 7 23 F 15`;
 
-    tableOpts["Refap0"] = 
-` G1 G2 G3 G4 G5
-  F 8 0 16 F
-  0 8 F 16 F
-  0 F 8 16 F
-  0 16 8 F F
-  0 16 8 F F
-  F 16 8 F 0
-  8 16 F F 0
-  8 F 16 F 0
-  8 F 16 0 F
-  F F 16 0 8
-  16 F F 0 8
-  16 F F 0 8
-  16 0 F F 8
-  16 0 F 8 F
-  F 0 F 8 16
-  F F 0 8 16
-  F 8 0 F 16
-  F 8 0 16 F
-  F 8 0 16 F
-  0 8 F 16 F
-  0 F 8 16 F
-  0 16 8 F F
-  F 16 8 F 0
-  8 16 F F 0
-  8 F 16 F 0
-  8 F 16 F 0
-  8 F 16 0 F
-  F F 16 0 8
-  16 F F 0 8
-  16 0 F F 8
-  16 0 F 8 F
-  F 0 F 8 16
-  F 0 F 8 16
-  F F 0 8 16
-  F 8 0 F 16`;
 
-tableOpts["Reduc23"] = 
-`I II III IV V
-  15 7 F F 23
-  15 F 7 F 23
-  15 23 7 F F
-  F 23 7 15 F
-  7 F 23 15 F
-  7 F 23 15 F
-  7 F 23 15 F
-  7 F F 23 15
-  F 7 F 23 15
-  23 7 F F 15
-  23 7 15 F F
-  F 23 15 F 7
-  F 23 15 F 7
-  F 23 15 F 7
-  F F 23 15 7
-  7 F 23 15 F
-  7 F F 15 23
-  7 15 F F 23
-  23 15 F 7 F
-  23 15 F 7 F
-  23 15 F 7 F
-  F 23 15 7 F
-  F 23 15 F 7
-  F F 15 23 7
-  15 F F 23 7
-  15 F 7 F 23
-  15 F 7 F 23
-  15 F 7 F 23
-  23 15 7 F F
-  23 15 F 7 F
-  F 15 23 7 F
-  F F 23 7 15
-  F 7 F 23 15
-  F 7 F 23 15
-  F 7 F 23 15`;
-
+  tableOpts["Refap0"] = 
+  ` G1 G2 G3 G4 G5
+    F 8 0 16 F
+    0 8 F 16 F
+    0 F 8 16 F
+    0 16 8 F F
+    0 16 8 F F
+    F 16 8 F 0
+    8 16 F F 0
+    8 F 16 F 0
+    8 F 16 0 F
+    F F 16 0 8
+    16 F F 0 8
+    16 F F 0 8
+    16 0 F F 8
+    16 0 F 8 F
+    F 0 F 8 16
+    F F 0 8 16
+    F 8 0 F 16
+    F 8 0 16 F
+    F 8 0 16 F
+    0 8 F 16 F
+    0 F 8 16 F
+    0 16 8 F F
+    F 16 8 F 0
+    8 16 F F 0
+    8 F 16 F 0
+    8 F 16 F 0
+    8 F 16 0 F
+    F F 16 0 8
+    16 F F 0 8
+    16 0 F F 8
+    16 0 F 8 F
+    F 0 F 8 16
+    F 0 F 8 16
+    F F 0 8 16
+    F 8 0 F 16`;
+  
+  tableOpts["Reduc"] = 
+  `I II III IV V
+    15 7 F F 23
+    15 F 7 F 23
+    15 23 7 F F
+    F 23 7 15 F
+    7 F 23 15 F
+    7 F 23 15 F
+    7 F 23 15 F
+    7 F F 23 15
+    F 7 F 23 15
+    23 7 F F 15
+    23 7 15 F F
+    F 23 15 F 7
+    F 23 15 F 7
+    F 23 15 F 7
+    F F 23 15 7
+    7 F 23 15 F
+    7 F F 15 23
+    7 15 F F 23
+    23 15 F 7 F
+    23 15 F 7 F
+    23 15 F 7 F
+    F 23 15 7 F
+    F 23 15 F 7
+    F F 15 23 7
+    15 F F 23 7
+    15 F 7 F 23
+    15 F 7 F 23
+    15 F 7 F 23
+    23 15 7 F F
+    23 15 F 7 F
+    F 15 23 7 F
+    F F 23 7 15
+    F 7 F 23 15
+    F 7 F 23 15
+    F 7 F 23 15`;
 
 var structTabela = {
     tableName: "Refap", 
@@ -176,6 +176,7 @@ var structTabela = {
         ret.day = dateIn;
         ret.groups = this.groups;
         ret.schedule = this.daysLines[index1];
+        //console.log(diffDays + "--" + dateIn);
         return ret;
     },
     getMonthScales: function(dateIn) {
@@ -184,7 +185,7 @@ var structTabela = {
         let year = dateIn.getFullYear();
         let lastDayofMonth = (new Date(year,month+1,0)).getDate();
         for (let day=1; day <= lastDayofMonth; day++) {
-            let dateDay = new Date(year, month, day, 8, 0, 0); // 8:00 AM is to BUG of DST in iOS
+            let dateDay = new Date(year, month, day, 8,0,0); // 8:00 AM for BUG of daylight saving (DST)
             let dia = this.getDayScales(dateDay);
             ret.push(dia);
         }

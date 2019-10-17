@@ -1,16 +1,16 @@
 {
   "name": "TabelaTurno",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "homepage": "https://tabelaturno.github.io/TabelaTurno/",
   "dependencies": {
-    "@material-ui/core": "^3.1.2",
-    "@material-ui/icons": "^3.0.1",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-ga": "^2.5.3",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.0.4"
+    "@babel/runtime": "^7.6.3",
+    "react": "^16.10.2",
+    "react-addons-perf": "^15.4.2",
+    "react-dom": "^16.10.2",
+    "react-ga": "^2.7.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "^3.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -30,6 +30,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "gh-pages": "^2.0.1"
+    "gh-pages": "^2.1.1"
   }
 }
