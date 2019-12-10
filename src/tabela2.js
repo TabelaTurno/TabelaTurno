@@ -55,12 +55,22 @@ const weekDayTD = (day) => {
 }
 const dayTDfunc = (day) =>
             day.schedule.map(
-                (scale, i) =>
-                    <td key={i} className={styleClassDay(scale)}>{scale}</td>
+                (scale, i) => 
+                    <td key={i} className={['tdDayCol' + i, styleClassDay(scale)].join(' ')}>{scale}</td>
             );
+
+    function thGroupClick(i, groupName) {
+        //alert(i + 'aab:' + groupName);
+        let shadesEl = document.querySelectorAll('.tdDayCol' + i).forEach(function (el) {
+            el.classList.add('backSelected')
+        });
+        
+
+    } 
+
 const groupsTD = (groups) => 
     groups.map((groupName, i) =>
-        <th key={i} onClick={() => eventClick("Grupo "+groupName)}>{groupName}</th>
+        <th key={i} onClick={() => { thGroupClick(i, groupName); eventClick("Grupo "+groupName);}}>{groupName}</th>
     );
 const daysTR = (daysIn) => daysIn.map((day, i) =>
     <tr key={i} className={[styleClassWeekDay(day.day), 'trTable'].join(' ')}>
@@ -132,27 +142,30 @@ class Tabela2 extends React.Component {
         const dateIn = this.state.actualDay;
         let nextFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()+1, 1);
         let nextMonthScale = tabelaGear.getMonthScales(nextFirstMounthDay);
-        let newMonthsObj = this.state.monthsTRs;
-        newMonthsObj.push(monthTRsComplete(nextMonthScale));
-        this.setState({actualDay: nextFirstMounthDay, monthsTRs: newMonthsObj });
+        this.setState({
+            monthsTRs: [
+                ...this.state.monthsTRs,
+                monthTRsComplete(nextMonthScale)
+             ],
+             actualDay: nextFirstMounthDay
+         });
         
         // Track month loading
         //let trackAction = dateIn.getFullYear()+"-"+(dateIn.getMonth()+1);
         //console.log(trackAction);
-        //trackEvent('Navigation', trackAction, 'label1');
-         
+        //trackEvent('Navigation', trackAction, 'label1');   
+     }
+
+     handleScroll() {
+        let distToBottom = getDistFromBottom();
+        if (distToBottom > 0 && distToBottom <= 1400) { // Near end;
+            let extTick = this.tick.bind(this);
+            extTick();
+        }
      }
 
     componentDidMount() {
-        const extTick = this.tick.bind(this);
-        document.addEventListener('scroll', function() {
-            let distToBottom = getDistFromBottom();
-            //console.log(distToBottom);
-            if (distToBottom > 0 && distToBottom <= 1400) { // Near end;
-               console.log('dentro do reac');
-               extTick();
-            }
-        });
+        document.addEventListener('scroll', this.handleScroll.bind(this));
     
         let timer = setTimeout(function () {
             window.scrollTo(0, document.getElementsByClassName("tdToday")[0].offsetTop - 135); //era 88 

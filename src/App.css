@@ -7,9 +7,11 @@
     --color-background: #FFF;
     --color-weekend-background: --color-weekend-background;
     --color-font-main: #000;
+    --color-selected: rgb(250,218,167);
     --svg-flag-red: url('data:image/svg+xml,<svg width="80" height="26" xmlns="http://www.w3.org/2000/svg"><g><rect fill="rgb(255, 59, 48)" height="26" width="80" rx="8" ry="8"/></g></svg>');
 
     --transition-scrool-props: top 0.2s ease-out;
+
 }
 
 .themeBlack {
@@ -20,9 +22,10 @@
     --color-background-header-transparent: rgba(51, 51, 51, 0.2); /*181818*/
     --color-font-main: #FFF;
     --color-background: #000;
+    --color-selected: rgb(131, 81, 0);
     --svg-flag-red: url('data:image/svg+xml,<svg width="80" height="26" xmlns="http://www.w3.org/2000/svg"><g><rect fill="rgb(255, 149, 0)" height="26" width="80" rx="8" ry="8"/></g></svg>');
     /*url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iMjYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHJlY3QgZmlsbD0iI2ZmOTUwMCIgaGVpZ2h0PSIyNiIgd2lkdGg9IjgwIiByeD0iOCIgcnk9IjgiLz48L2c+PC9zdmc+");*/
-   
+    
 }
 
 body {
@@ -94,6 +97,19 @@ div .App {
     font-weight: bold;
 }
 .tdF { color: var(--color-destac) }
+
+.backSelected { font-weight: bold; border-bottom: none; 
+    background: linear-gradient(90deg, 
+        rgba(255,190,60,0) 0%, 
+        rgba(255,189,60,0) 5%, 
+        var(--color-selected) 10%, 
+        var(--color-selected) 90%, 
+        rgba(255,189,60,0) 95%, 
+        rgba(255,189,60,0) 100%);
+}
+
+
+
 
 .trSunday, .trSaturday  { background: var(--color-weekend-background); }
 .trSunday td:first-child { color: var(--color-weekend); } 
