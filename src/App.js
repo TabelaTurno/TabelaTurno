@@ -119,7 +119,21 @@ class App extends React.Component {
 
   
   render() {
+    let LastTableOnSession = window.localStorage.getItem("lastTableName");
+    console.log("Lasttable: " + LastTableOnSession);
+    
     let {tableName} = this.state;
+    if (tableName == "") { // If root adress, tableName came blank
+      tableName = LastTableOnSession || "Refap";
+      window.history.pushState(tableName, "Tabela", "/" + tableName);
+    }
+    window.localStorage.setItem("lastTableName", tableName);
+    
+    let storageTheme = window.localStorage.getItem('AppTheme');
+    if (storageTheme == "themeBlack") {
+      document.body.classList.add("themeBlack");
+    }
+
     /*
     const debugdiv = {position: 'fixed', top:'10px', margin: '20px 30%', 
                       background: 'rgba(255,0,0,0.5)', zIndex: '400'};

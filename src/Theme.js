@@ -5,16 +5,18 @@ import React from "react";
 class BtnChangeTheme extends React.Component {
   constructor(props) {
     super(props);
-    
-    let localTheme = window.localStorage.getItem('AppTheme');
-    localTheme = (localTheme==null) ? "" : localTheme;
+
+    let storageTheme = window.localStorage.getItem('AppTheme');
+    let localTheme = (storageTheme==null) ? "" : storageTheme;
 
     this.state = {
       AppTheme: localTheme
     };
+    
+
   }
 
-  handleClickTheme() {
+  handleTheme() {
     if (this.state.AppTheme === "") {
       this.setState(
         {
@@ -36,6 +38,11 @@ class BtnChangeTheme extends React.Component {
         }
       );
     }
+  }
+
+  handleClickTheme() {
+    let fnHandleTheme = this.handleTheme.bind(this);
+    fnHandleTheme();
     //this.VerifyAppTheme(this.state.AppTheme);
   }
 
