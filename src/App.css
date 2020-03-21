@@ -9,9 +9,9 @@
     --color-font-main: #000;
     --color-selected: rgb(250,218,167);
     --svg-flag-red: url('data:image/svg+xml,<svg width="80" height="26" xmlns="http://www.w3.org/2000/svg"><g><rect fill="rgb(255, 59, 48)" height="26" width="80" rx="8" ry="8"/></g></svg>');
-
+    --color-shadow: rgba(0,0,0,0.7);
     --transition-scrool-props: top 0.2s ease-out;
-
+    
 }
 
 .themeBlack {
@@ -25,7 +25,7 @@
     --color-selected: rgb(131, 81, 0);
     --svg-flag-red: url('data:image/svg+xml,<svg width="80" height="26" xmlns="http://www.w3.org/2000/svg"><g><rect fill="rgb(255, 149, 0)" height="26" width="80" rx="8" ry="8"/></g></svg>');
     /*url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAiIGhlaWdodD0iMjYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGc+PHJlY3QgZmlsbD0iI2ZmOTUwMCIgaGVpZ2h0PSIyNiIgd2lkdGg9IjgwIiByeD0iOCIgcnk9IjgiLz48L2c+PC9zdmc+");*/
-    
+    --color-shadow: rgba(255,255,255,0.6);
 }
 
 body {

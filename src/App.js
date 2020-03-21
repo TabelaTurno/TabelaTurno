@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Tabela from './tabela2';
 import CardMenu from './CardMenu';
+import Notification from './Notification';
 import { trackEvent } from './analytics';
 
 
@@ -141,6 +142,7 @@ class App extends React.Component {
     */
     return (
       <>       
+        <Notification />
         <div className="topBar" style={{verticalAlign: 'center'}}>
           <AppIcon />
           <TableTitle text={tableName}/>
@@ -148,6 +150,7 @@ class App extends React.Component {
         </div>
         <EasterEggRollout />
         <Tabela month="7" tableName={tableName}></Tabela>
+        
       </>
     );
   }
