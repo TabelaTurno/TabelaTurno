@@ -59,19 +59,18 @@ const dayTDfunc = (day) =>
                     <td key={i} className={['tdDayCol' + i, styleClassDay(scale)].join(' ')}>{scale}</td>
             );
 
-    function thGroupClick(i, groupName) {
-        //alert(i + 'aab:' + groupName);
-        let shadesEl = document.querySelectorAll('.tdDayCol' + i).forEach(function (el) {
-            el.classList.add('backSelected')
-        });
-        
-
-    } 
+function thGroupClick(i, groupName) {
+    //alert(i + 'aab:' + groupName);
+    let shadesEl = document.querySelectorAll('.tdDayCol' + i).forEach(function (el) {
+        el.classList.add('backSelected')
+    });
+} 
 
 const groupsTD = (groups) => 
     groups.map((groupName, i) =>
         <th key={i} onClick={() => { thGroupClick(i, groupName); eventClick("Grupo "+groupName);}}>{groupName}</th>
     );
+
 const daysTR = (daysIn) => daysIn.map((day, i) =>
     <tr key={i} className={[styleClassWeekDay(day.day), 'trTable'].join(' ')}>
     <td key={i} className={['tdDate', styleClassToday(day.day)].join(' ')} > {DateToStringFormated(day.day)}</td> 
@@ -102,15 +101,6 @@ function getDistFromBottom () {
     return Math.max(bodyHeight - (scrollPosition + windowSize), 0);  
   }
 
-document.addEventListener('scroll', function() {
-    let distToBottom = getDistFromBottom();
-    if (distToBottom > 0 && distToBottom <= 1000) { // Near end;
-       
-    }
-});
-
-
-
 
 class Tabela2 extends React.Component {
 
@@ -123,8 +113,8 @@ class Tabela2 extends React.Component {
         const dateIn = new Date(); // GetToday
         const days = tabelaGear.getMonthScales(dateIn);
 
-        let beforeFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
-        let daysbefore = tabelaGear.getMonthScales(beforeFirstMounthDay);
+        let beforeFirstMonthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
+        let daysbefore = tabelaGear.getMonthScales(beforeFirstMonthDay);
 
         
         this.state = { 
@@ -133,27 +123,26 @@ class Tabela2 extends React.Component {
             actualDay: dateIn,
             monthsTRs: [monthTRsComplete(daysbefore), monthTRsComplete(days)],
         }
-        //Load more 1 month
-        const extTick = this.tick.bind(this);
-        extTick();
+
     }
 
     tick()   {
         const dateIn = this.state.actualDay;
-        let nextFirstMounthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()+1, 1);
-        let nextMonthScale = tabelaGear.getMonthScales(nextFirstMounthDay);
+        let nextFirstMonthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()+1, 1);
+        let nextMonthScale = tabelaGear.getMonthScales(nextFirstMonthDay);
+
         this.setState({
             monthsTRs: [
                 ...this.state.monthsTRs,
                 monthTRsComplete(nextMonthScale)
              ],
-             actualDay: nextFirstMounthDay
+             actualDay: nextFirstMonthDay
          });
         
         // Track month loading
-        //let trackAction = dateIn.getFullYear()+"-"+(dateIn.getMonth()+1);
-        //console.log(trackAction);
-        //trackEvent('Navigation', trackAction, 'label1');   
+        let trackAction = dateIn.getFullYear()+"-"+(dateIn.getMonth()+1);
+        console.log(trackAction);
+        trackEvent('Navigation', trackAction, 'label3');   
      }
 
      handleScroll() {
@@ -171,6 +160,8 @@ class Tabela2 extends React.Component {
             window.scrollTo(0, document.getElementsByClassName("tdToday")[0].offsetTop - 135); //era 88 
         }, 50);
         
+        let extTick = this.tick.bind(this); // To use method in next line
+        extTick(); // Load next month as DidMount.
     }
 
 
