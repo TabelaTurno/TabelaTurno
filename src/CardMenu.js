@@ -62,9 +62,11 @@ class CardMenu extends Component {
       }
   }
 
-  handleSelectTable = (event) => {
-    this.props.history.push(event.target.value);
-    
+  handleSelectTable(event, textTable)  {
+    trackEvent('Click', "CardMenu" + textTable + "Click", 'label2');
+    let closeMenu = this.closeMenu.bind(this);
+    closeMenu(this);
+    //console.log(event.target.href.split("/").slice(-1).pop());
   }
 
   render() {
@@ -94,9 +96,10 @@ class CardMenu extends Component {
             ? (
               <div className="cardMenu" ref={(element) => { this.dropdownMenu = element; }}>
                 <BtChangeTheme className="linkCard" />
-                <Link className="linkCard" onClick={() => trackEvent('Click', 'CardMenuRefap0Click', 'label2')} to="/Refap">Refap 23-7-15</Link>
-                <Link className="linkCard" onClick={() => trackEvent('Click', 'CardMenuRefap23Click', 'label2')} to="/Refap0">Refap 0-8-16</Link>
-                <Link className="linkCard" onClick={() => trackEvent('Click', 'CardMenuReducClick', 'label2')} to="/Reduc">Reduc</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap12x12")} to="/Refap12x12">Refap 12x12</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap23")} to="/Refap">Refap 23-7-15</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap0")} to="/Refap0">Refap 0-8-16</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Reduc")} to="/Reduc">Reduc</Link>
                 {buttonsForTest}
                 <div className="menuTextInfo">
                 

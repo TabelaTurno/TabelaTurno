@@ -141,6 +141,24 @@
     F 7 F 23 15
     F 7 F 23 15`;
 
+    tableOpts["Refap12x12"] = 
+    ` G1 G2 G3 G4 G5
+    F F 7 19 F
+    F F F 19 7
+    19 F F F 7
+    19 F F F 7
+    19 7 F F F
+    F 7 19 F F
+    F 7 19 F F
+    F F 19 7 F
+    F F F 7 19
+    F F F 7 19
+    7 F F F 19
+    7 19 F F F
+    7 19 F F F
+    F 19 7 F F
+    F F 7 19 F`;
+
 var structTabela = {
     tableName: "Refap", 
     tableLink: "refap23", 
@@ -151,7 +169,7 @@ var structTabela = {
     //tableData: tabelaRefap23,
 
     populateTableDate: function(tabelaName) {
-        if (!tabelaName) { tabelaName = "Refap23"; }
+        if (!tabelaName) { tabelaName = "Refap12x12"; }
         this.tableData = tableOpts[tabelaName]; // TODO: automatic load..
         let newvar = this.tableData.replace(/^\s+/g,'').split("\n");
         let newvar2 = newvar.map(function(k,v) { return k.replace(/^\s+/g,'').split(" "); })

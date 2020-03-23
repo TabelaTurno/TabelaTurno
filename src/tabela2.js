@@ -15,7 +15,8 @@ function DateToStringFormated(date) {
     return date.toLocaleDateString("pt", {
         day: "2-digit",
         month: 'short'
-    }).replace(" de ", "/");
+    }).replace(" de ", "/")
+      .replace(".",""); //  Remove period on end of month at Chrome browser;
 }
 
 function isSameDay(dateToCheck, dateToCheck2) {
@@ -62,13 +63,15 @@ const dayTDfunc = (day) =>
 function thGroupClick(i, groupName) {
     //alert(i + 'aab:' + groupName);
     let shadesEl = document.querySelectorAll('.tdDayCol' + i).forEach(function (el) {
-        el.classList.add('backSelected')
+        el.classList.toggle('backSelected');
     });
+    eventClick("Grupo "+groupName);
+    
 } 
 
 const groupsTD = (groups) => 
     groups.map((groupName, i) =>
-        <th key={i} onClick={() => { thGroupClick(i, groupName); eventClick("Grupo "+groupName);}}>{groupName}</th>
+        <th key={i} onClick={() => { thGroupClick(i, groupName); }}>{groupName}</th>
     );
 
 const daysTR = (daysIn) => daysIn.map((day, i) =>
@@ -106,9 +109,16 @@ class Tabela2 extends React.Component {
 
     constructor(props) {
         super(props);
-        
-        const { month, tableName } = this.props;
 
+        const { tableName } = this.props;
+        this.setState({tableEra: tableName});
+        this.initTableComponent();
+
+    }
+
+    initTableComponent() {
+        const tableName = this.props.tableName;
+        
         tabelaGear.populateTableDate(tableName);
         const dateIn = new Date(); // GetToday
         const days = tabelaGear.getMonthScales(dateIn);
@@ -116,14 +126,12 @@ class Tabela2 extends React.Component {
         let beforeFirstMonthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
         let daysbefore = tabelaGear.getMonthScales(beforeFirstMonthDay);
 
-        
         this.state = { 
             tableInput: tableName,
             dayOne: dateIn,
             actualDay: dateIn,
             monthsTRs: [monthTRsComplete(daysbefore), monthTRsComplete(days)],
         }
-
     }
 
     tick()   {
@@ -154,9 +162,21 @@ class Tabela2 extends React.Component {
      }
 
     componentDidMount() {
+
+        //console.log(this.props.groupSelected);
+        
+        let txtGroupSeleced = this.props.groupSelected;
+        if (txtGroupSeleced != undefined) {
+            var xpath = "//th[text()='" + txtGroupSeleced + "']";
+            var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            matchingElement.click();
+            console.log("Mathing");
+            console.log(matchingElement);
+        }
+        
         document.addEventListener('scroll', this.handleScroll.bind(this));
     
-        let timer = setTimeout(function () {
+        let timer = setTimeout(function () { // Wait 50ms and set scrool to TODAY
             window.scrollTo(0, document.getElementsByClassName("tdToday")[0].offsetTop - 135); //era 88 
         }, 50);
         
@@ -164,8 +184,17 @@ class Tabela2 extends React.Component {
         extTick(); // Load next month as DidMount.
     }
 
+    
+    componentDidUpdate(prevProps) {
+        if (this.props.tableName !== prevProps.tableName) {
+          this.initTableComponent();
+          let extTick = this.tick.bind(this);
+          extTick();
+        }
+      }
 
     render() {  
+
         return ( 
             /* <div className="tbContainer">*/
             <table className={'tbMain'}>

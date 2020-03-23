@@ -4,8 +4,38 @@ import CardMenu from './CardMenu';
 import Notification from './Notification';
 import { trackEvent } from './analytics';
 
-
 import './App.css';
+
+function fnShowOnRollDown() {
+
+  var style = document.createElement('style');
+    style.type = 'text/css';
+  
+
+    var prevScrollpos = window.pageYOffset;
+    var flagIsHiddenMenu = false;
+    window.onscroll = function() {
+    var currentScrollPos = window.pageYOffset;
+      if (prevScrollpos > currentScrollPos) {
+        if (flagIsHiddenMenu === true) { //then SHOW
+          document.getElementsByClassName("topBar")[0].style.top = "0px";
+          style.innerHTML = '.trHead th { top: 48px; }';
+          document.getElementsByTagName('head')[0].appendChild(style);
+          flagIsHiddenMenu = false;
+        }
+      } else {
+        if (flagIsHiddenMenu === false) { // then HIDE
+          document.getElementsByClassName("topBar")[0].style.top = "-50px";
+          style.innerHTML = '.trHead th { top: -1px; }';
+          document.getElementsByTagName('head')[0].appendChild(style);
+          flagIsHiddenMenu = true;
+        }
+      }
+      prevScrollpos = currentScrollPos;
+    }
+    return 0;
+}
+
 
 class EasterEggRollout extends Component {
   constructor() {
@@ -23,7 +53,7 @@ class EasterEggRollout extends Component {
 class TableTitle extends Component {
   constructor(props) {
     super(props);
-    this.state = {textTitle: this.props.text};
+    //this.state = {textTitle: this.props.text};
   }
   handleClick() {
     trackEvent('Click', 'TableTitle', 'label2');
@@ -33,7 +63,7 @@ class TableTitle extends Component {
     return (
       <span onClick={() => this.handleClick()} 
             style={{marginLeft: '20px', textDecoration: 'none'}}>
-            {this.state.textTitle}
+            {this.props.text}
       </span>
     )
   }
@@ -84,48 +114,22 @@ class App extends React.Component {
   
   constructor(props) {
    super(props);
+    //console.log(props.match);
 
+    fnShowOnRollDown();
 
-    var style = document.createElement('style');
-    style.type = 'text/css';
-  
+    console.log("passou pelo constructuros.");
 
-    var prevScrollpos = window.pageYOffset;
-    var flagIsHiddenMenu = false;
-    window.onscroll = function() {
-    var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        if (flagIsHiddenMenu === true) { //then SHOW
-          document.getElementsByClassName("topBar")[0].style.top = "0px";
-          style.innerHTML = '.trHead th { top: 48px; }';
-          document.getElementsByTagName('head')[0].appendChild(style);
-          flagIsHiddenMenu = false;
-        }
-      } else {
-        if (flagIsHiddenMenu === false) { // then HIDE
-          document.getElementsByClassName("topBar")[0].style.top = "-50px";
-          style.innerHTML = '.trHead th { top: -1px; }';
-          document.getElementsByTagName('head')[0].appendChild(style);
-          flagIsHiddenMenu = true;
-        }
-      }
-      prevScrollpos = currentScrollPos;
-    }
-
-  }
-
-  state = {
-    tableName: this.props.tableName
-  };
-
-  
-  render() {
     let LastTableOnSession = window.localStorage.getItem("lastTableName");
     console.log("Lasttable: " + LastTableOnSession);
     
-    let {tableName} = this.state;
-    if (tableName == "") { // If root adress, tableName came blank
-      tableName = LastTableOnSession || "Refap";
+    let tableName = this.props.match.params.tableUrl;
+    console.log(this.props.match);
+    console.log("TableName " + tableName);
+    if (tableName == "" || tableName == undefined) { // If root adress, tableName came blank
+
+      tableName = LastTableOnSession || "Refap"; // Refap is a const DEFAULT
+      console.log("Mudou para padrao: " + tableName);
       window.history.pushState(tableName, "Tabela", "/" + tableName);
     }
     window.localStorage.setItem("lastTableName", tableName);
@@ -135,10 +139,24 @@ class App extends React.Component {
       document.body.classList.add("themeBlack");
     }
 
+    this.state = {
+      tableName: tableName
+    };
+
+
+
+  }
+
+  render() {
+    
+
+    let tableName = this.props.match.params.tableUrl || "Refap12x12";
+    let groupSelected = this.props.match.params.group;
+    this.state.tableName = tableName;
     /*
     const debugdiv = {position: 'fixed', top:'10px', margin: '20px 30%', 
                       background: 'rgba(255,0,0,0.5)', zIndex: '400'};
-    <div style={debugdiv}>Debug: {process.env.NODE_ENV}</div> 
+     <div style={debugdiv}>Debug: {process.env.NODE_ENV} -- {tableName} ++ {this.state.tableName}</div>
     */
     return (
       <>       
@@ -147,10 +165,10 @@ class App extends React.Component {
           <AppIcon />
           <TableTitle text={tableName}/>
           <CardMenu style={{float: 'right'}} />
+         
         </div>
         <EasterEggRollout />
-        <Tabela month="7" tableName={tableName}></Tabela>
-        
+        <Tabela month="7" tableName={tableName} groupSelected={groupSelected}></Tabela>
       </>
     );
   }
