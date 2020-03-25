@@ -159,6 +159,45 @@
     F 19 7 F F
     F F 7 19 F`;
 
+    tableOpts["Repar12x12"] = 
+    ` A B C D E
+    F 7 19 F F
+    F 7 19 F F
+    F F 19 7 F
+    F F F 7 19
+    F F F 7 19
+    7 F F F 19
+    7 19 F F F
+    7 19 F F F
+    F 19 7 F F
+    F F 7 19 F
+    F F 7 19 F
+    F F F 19 7
+    19 F F F 7
+    19 F F F 7
+    19 7 F F F`;
+
+    tableOpts["Replan12x12"] = tableOpts["Repar12x12"];
+
+    tableOpts["Rpbc12x12"] = 
+    ` A B C D E
+    F F 19 7 F
+    F F F 7 19
+    F F F 7 19
+    7 F F F 19
+    7 19 F F F
+    7 19 F F F
+    F 19 7 F F
+    F F 7 19 F
+    F F 7 19 F
+    F F F 19 7
+    19 F F F 7
+    19 F F F 7
+    19 7 F F F
+    F 7 19 F F
+    F 7 19 F F`;
+
+
 var structTabela = {
     tableName: "Refap", 
     tableLink: "refap23", 
