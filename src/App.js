@@ -16,6 +16,8 @@ function fnShowOnRollDown() {
     var flagIsHiddenMenu = false;
     window.onscroll = function() {
     var currentScrollPos = window.pageYOffset;
+    let isMenuClosed = document.getElementsByClassName("cardMenu").length == 0;
+    
       if (prevScrollpos > currentScrollPos) {
         if (flagIsHiddenMenu === true) { //then SHOW
           document.getElementsByClassName("topBar")[0].style.top = "0px";
@@ -24,7 +26,7 @@ function fnShowOnRollDown() {
           flagIsHiddenMenu = false;
         }
       } else {
-        if (flagIsHiddenMenu === false) { // then HIDE
+        if (flagIsHiddenMenu === false && isMenuClosed) { // then HIDE
           document.getElementsByClassName("topBar")[0].style.top = "-50px";
           style.innerHTML = '.trHead th { top: -1px; }';
           document.getElementsByTagName('head')[0].appendChild(style);

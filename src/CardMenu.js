@@ -94,6 +94,8 @@ class CardMenu extends Component {
         {
           this.state.showMenu
             ? (
+              <>
+              <div className="bgMenuHandler"></div>
               <div className="cardMenu" ref={(element) => { this.dropdownMenu = element; }}>
                 <BtChangeTheme className="linkCard" />
                 <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap12x12")} to="/Refap12x12">REFAP 12x12</Link>
@@ -112,6 +114,7 @@ class CardMenu extends Component {
                 <span>Internal number: {uuid_five()}-{this.state.numVisitCounter}</span>
                 </div>  
               </div>
+              </>
             )
             : (
               null
