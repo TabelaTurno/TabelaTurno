@@ -197,6 +197,24 @@
     F 7 19 F F
     F 7 19 F F`;
 
+tableOpts["Reduc12x12"] =
+    ` A B C D E
+    F 7 F F 19
+    19 7 F F F
+    19 7 F F F
+    19 F F 7 F
+    F F 19 7 F
+    F F 19 7 F
+    F F 19 F 7
+    F 19 F F 7
+    F 19 F F 7
+    7 19 F F F
+    7 F F 19 F
+    7 F F 19 F
+    F F 7 19 F
+    F F 7 F 19
+    F F 7 F 19`;
+
 
 var structTabela = {
     tableName: "Refap", 
