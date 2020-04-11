@@ -4,7 +4,7 @@ import { trackEvent } from './analytics';
 
 
 
-
+// eslint-disable-next-line
 Date.prototype.addDays = function(days) {
     var date = new Date(this.valueOf());
     date.setDate(date.getDate() + days);
@@ -62,7 +62,7 @@ const dayTDfunc = (day) =>
 
 function thGroupClick(i, groupName) {
     //alert(i + 'aab:' + groupName);
-    let shadesEl = document.querySelectorAll('.tdDayCol' + i).forEach(function (el) {
+    document.querySelectorAll('.tdDayCol' + i).forEach(function (el) {
         el.classList.toggle('backSelected');
     });
     eventClick("Grupo "+groupName);
@@ -116,7 +116,7 @@ class Tabela2 extends React.Component {
 
     }
 
-    initTableComponent() {
+    initTableComponent() {  
         const tableName = this.props.tableName;
         
         tabelaGear.populateTableDate(tableName);
@@ -125,7 +125,8 @@ class Tabela2 extends React.Component {
 
         let beforeFirstMonthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
         let daysbefore = tabelaGear.getMonthScales(beforeFirstMonthDay);
-
+        
+        // eslint-disable-next-line
         this.state = { 
             tableInput: tableName,
             dayOne: dateIn,
@@ -166,7 +167,7 @@ class Tabela2 extends React.Component {
         //console.log(this.props.groupSelected);
         
         let txtGroupSeleced = this.props.groupSelected;
-        if (txtGroupSeleced != undefined) {
+        if (txtGroupSeleced !== undefined) {
             var xpath = "//th[text()='" + txtGroupSeleced + "']";
             var matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
             matchingElement.click();
@@ -175,7 +176,8 @@ class Tabela2 extends React.Component {
         }
         
         document.addEventListener('scroll', this.handleScroll.bind(this));
-    
+        
+        // eslint-disable-next-line
         let timer = setTimeout(function () { // Wait 50ms and set scrool to TODAY
             window.scrollTo(0, document.getElementsByClassName("tdToday")[0].offsetTop - 135); //era 88 
         }, 50);

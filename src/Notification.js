@@ -27,7 +27,10 @@ class Notification extends Component {
           {this.state.showComponent && 
             <>
                 <div className="divAllForClose" onClick={this.handleClick.bind(this)}></div>
-                <div className="divNotification"> ⚠️ <br />A nova tabela de 12 horas será adicionada ainda hoje. <br /><br /></div>
+                <div className="divNotification">
+                  <span role="img" aria-label="Emoji alert">⚠️</span><br />
+                  A nova tabela de 12 horas será adicionada ainda hoje. <br /><br />
+                </div>
             </>
             }
           </>

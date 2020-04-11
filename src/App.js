@@ -16,7 +16,7 @@ function fnShowOnRollDown() {
     var flagIsHiddenMenu = false;
     window.onscroll = function() {
     var currentScrollPos = window.pageYOffset;
-    let isMenuClosed = document.getElementsByClassName("cardMenu").length == 0;
+    let isMenuClosed = document.getElementsByClassName("cardMenu").length === 0;
 
       if (prevScrollpos > currentScrollPos) {
         if (flagIsHiddenMenu === true) { //then SHOW
@@ -40,9 +40,7 @@ function fnShowOnRollDown() {
 
 
 class EasterEggRollout extends Component {
-  constructor() {
-    super();
-  }
+
   render() {
     return (
       <div style={{textAlign: 'center', marginBottom: '25px'}}>
@@ -82,9 +80,6 @@ class TableTitle extends Component {
 
 
 class AppIcon extends Component {
-  constructor() {
-    super();
-  }
   
   handleReload() {
     trackEvent('Click', 'AppIcon', 'label2');
@@ -137,7 +132,7 @@ class App extends React.Component {
     let tableName = this.props.match.params.tableUrl;
     console.log(this.props.match);
     console.log("TableName " + tableName);
-    if (tableName == "" || tableName == undefined) { // If root adress, tableName came blank
+    if (tableName === "" || tableName === undefined) { // If root adress, tableName came blank
 
       tableName = LastTableOnSession || "Refap"; // Refap is a const DEFAULT
       console.log("Mudou para padrao: " + tableName);
@@ -146,7 +141,7 @@ class App extends React.Component {
     window.localStorage.setItem("lastTableName", tableName);
     
     let storageTheme = window.localStorage.getItem('AppTheme');
-    if (storageTheme == "themeBlack") {
+    if (storageTheme === "themeBlack") {
       document.body.classList.add("themeBlack");
     }
 
@@ -163,7 +158,7 @@ class App extends React.Component {
 
     let tableName = this.props.match.params.tableUrl || "Refap12x12";
     let groupSelected = this.props.match.params.group;
-    this.state.tableName = tableName;
+    //this.state.tableName = tableName;
     /*
     const debugdiv = {position: 'fixed', top:'10px', margin: '20px 30%', 
                       background: 'rgba(255,0,0,0.5)', zIndex: '400'};

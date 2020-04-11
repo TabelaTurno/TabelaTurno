@@ -7,7 +7,8 @@
         const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
         return Math.floor((utc2 - utc1) / _MS_PER_DAY);
     }   
-
+    
+    // eslint-disable-next-line
     function getDaysInMonth(month, year) {
      var date = new Date(year, month, 1);
      var days = [];
