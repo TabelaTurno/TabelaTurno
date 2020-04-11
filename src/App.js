@@ -17,21 +17,21 @@ function fnShowOnRollDown() {
     window.onscroll = function() {
     var currentScrollPos = window.pageYOffset;
     let isMenuClosed = document.getElementsByClassName("cardMenu").length == 0;
-    
+
       if (prevScrollpos > currentScrollPos) {
         if (flagIsHiddenMenu === true) { //then SHOW
           document.getElementsByClassName("topBar")[0].style.top = "0px";
-          style.innerHTML = '.trHead th { top: 48px; }';
+          style.innerHTML = '.trHead th { top: 48px; position: sticky; }';
           document.getElementsByTagName('head')[0].appendChild(style);
           flagIsHiddenMenu = false;
         }
       } else {
-        if (flagIsHiddenMenu === false && isMenuClosed) { // then HIDE
-          document.getElementsByClassName("topBar")[0].style.top = "-50px";
-          style.innerHTML = '.trHead th { top: -1px; }';
-          document.getElementsByTagName('head')[0].appendChild(style);
-          flagIsHiddenMenu = true;
-        }
+          if (flagIsHiddenMenu === false && isMenuClosed) { // then HIDE
+            document.getElementsByClassName("topBar")[0].style.top = "-50px";
+            style.innerHTML = '.trHead th { top: -1px; position: inherit; }';
+            document.getElementsByTagName('head')[0].appendChild(style);
+            flagIsHiddenMenu = true;
+          }  
       }
       prevScrollpos = currentScrollPos;
     }
@@ -55,17 +55,26 @@ class EasterEggRollout extends Component {
 class TableTitle extends Component {
   constructor(props) {
     super(props);
+    this.state = { isToggleOn: true };
     //this.state = {textTitle: this.props.text};
   }
+
   handleClick() {
     trackEvent('Click', 'TableTitle', 'label2');
-    this.setState({ textTitle: "tabelaturno.github.io/" + this.props.text});
+
+    this.setState(state => ({
+      isToggleOn: !state.isToggleOn
+    }));
+
+    //Copy to clipboard
+    
   }
+
   render() {
     return (
       <span onClick={() => this.handleClick()} 
-            style={{marginLeft: '20px', textDecoration: 'none'}}>
-            {this.props.text}
+            style={{marginLeft: '20px', paddingLeft: '20px', textDecoration: 'none', textOverflow: 'hidden', fontSize: this.state.isToggleOn ? '16px' : '10px'}}>
+        {this.state.isToggleOn ?  this.props.text : "tabelaturno.github.io/TabelaTurno/" + this.props.text }
       </span>
     )
   }
