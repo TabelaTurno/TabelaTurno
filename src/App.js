@@ -71,7 +71,7 @@ class TableTitle extends Component {
   render() {
     return (
       <span onClick={() => this.handleClick()} 
-            style={{marginLeft: '20px', paddingLeft: '20px', textDecoration: 'none', textOverflow: 'hidden', fontSize: this.state.isToggleOn ? '16px' : '10px'}}>
+            style={{marginLeft: '20px', textDecoration: 'none', textOverflow: 'hidden', fontSize: this.state.isToggleOn ? '16px' : '10px'}}>
         {this.state.isToggleOn ?  this.props.text : "tabelaturno.github.io/TabelaTurno/" + this.props.text }
       </span>
     )

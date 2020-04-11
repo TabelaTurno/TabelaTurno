@@ -28,10 +28,17 @@
 
 .menuTextInfo {
     font-size: 4pt;
-    padding-left: 15pt;
+    padding: 5pt 15pt;
     margin-bottom: 15pt;
-}
 
+}
+.menuTextInfo div {
+    margin-top: 5px;
+}
+.menuTextInfo div.TextInfoEmail {
+    font-size: 6pt;
+    margin-bottom: 12px;
+}
 
 .bgMenuHandler {
 

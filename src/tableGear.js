@@ -199,8 +199,7 @@
     F 7 19 F F`;
 
 tableOpts["Reduc12x12"] =
-    ` A B C D E
-    F 7 F F 19
+    ` G1 G2 G3 G4 G5
     19 7 F F F
     19 7 F F F
     19 F F 7 F
@@ -214,7 +213,8 @@ tableOpts["Reduc12x12"] =
     7 F F 19 F
     F F 7 19 F
     F F 7 F 19
-    F F 7 F 19`;
+    F F 7 F 19
+    F 7 F F 19`;
 
 
 var structTabela = {

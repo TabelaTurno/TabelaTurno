@@ -99,20 +99,21 @@ class CardMenu extends Component {
               <div className="bgMenuHandler"></div>
               <div className="cardMenu" ref={(element) => { this.dropdownMenu = element; }}>
                 <BtChangeTheme className="linkCard" />
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap12x12")} to="/Refap12x12">REFAP 12x12</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap23")} to="/Refap">REFAP 23-7-15</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap0")} to="/Refap0">REFAP 0-8-16</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Repar12x12")} to="/Repar12x12">REPAR 12x12</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Replan12x12")} to="/Replan12x12">REPLAN 12x12</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Rpbc12x12")} to="/Rpbc12x12">RPBC 12x12</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap12x12")}   to="/Refap12x12">REFAP 12x12</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap23")}      to="/Refap">REFAP 23-7-15</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap0")}       to="/Refap0">REFAP 0-8-16</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Reduc12x12")}   to="/Reduc12x12">REDUC 12x12</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Repar12x12")}   to="/Repar12x12">REPAR 12x12</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Replan12x12")}  to="/Replan12x12">REPLAN 12x12</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Rpbc12x12")}    to="/Rpbc12x12">RPBC 12x12</Link>
                 
                 {buttonsForTest}
                 <div className="menuTextInfo">
                 
-                <div>Envie sua tabela para <a href="mailto:tabelaturno@gmail.com" onClick={() => trackEvent('Click', 'CardMenuEmailClick', 'label2')}>tabelaturno@gmail.com</a></div>  
+                <div className="TextInfoEmail">Envie sua tabela para <a href="mailto:turno.tabela+click@gmail.com" onClick={() => trackEvent('Click', 'CardMenuEmailClick', 'label2')}>turno.tabela@gmail.com</a></div>  
                 <div>Icons made by <a href="https://www.flaticon.com/authors/bqlqn" rel="noopener noreferrer" title="bqlqn">bqlqn</a> from <a href="https://www.flaticon.com/" rel="noopener noreferrer" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" rel="noopener noreferrer" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
                 <div>Icons made by <a href="https://www.freepik.com/" rel="noopener noreferrer" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" rel="noopener noreferrer" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" rel="noopener noreferrer" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
-                <span>Internal number: {uuid_five()}-{this.state.numVisitCounter}</span>
+                <div>Internal number: {uuid_five()}-{this.state.numVisitCounter}</div>
                 </div>  
               </div>
               </>
