@@ -220,7 +220,7 @@ tableOpts["Reduc12x12"] =
 var structTabela = {
     tableName: "Refap", 
     tableLink: "refap23", 
-    firstDay: "2018-08-01", 
+    firstDay: "2020-01-23", 
     firstDayJS: "",
     groups: "",
     daysLines: "",
@@ -240,19 +240,13 @@ var structTabela = {
     },
     getDayScales: function(dateIn) {
         let ret = {day: "", groups: "", schedule: ""};
-        let tableSize = this.daysLines.length;
+
         let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
-        //console.log(diffDays);
-        let relDiffSize = diffDays / tableSize;
-        let round1 = Math.floor(relDiffSize);
-        let step1 = (relDiffSize-round1).toFixed(6);
-        let step2 = step1 * tableSize;
-        let index1 = Math.round(step2);
-        
+        let indexTab = diffDays % this.daysLines.length;
+        ret.schedule = this.daysLines[indexTab];
+                
         ret.day = dateIn;
         ret.groups = this.groups;
-        ret.schedule = this.daysLines[index1];
-        //console.log(diffDays + "--" + dateIn);
         return ret;
     },
     getMonthScales: function(dateIn) {
