@@ -184,6 +184,15 @@ class Tabela2 extends React.Component {
         
         let extTick = this.tick.bind(this); // To use method in next line
         extTick(); // Load next month as DidMount.
+
+        let timer = setTimeout(function () { // Wait 80ms and alert user
+            let alert_table = this.state.tableInput.localeCompare("Refap0") === 0;
+            if (alert_table) {
+                alert("Aguardando definição oficial da empresa para atualizar tabela.");
+                trackEvent('UserAlert', 'AlertToscoEsperandoTabelaOficial', 'label4'); 
+            }
+        }, 80);
+
     }
 
     

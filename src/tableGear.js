@@ -27,6 +27,7 @@
   F 8 8 8
   8 8 8 8`;
 
+  /*
     tableOpts["Refap"] = 
 ` G1 G2 G3 G4 G5
   23 7 F 15 F
@@ -103,7 +104,16 @@
     F 0 F 8 16
     F F 0 8 16
     F 8 0 F 16`;
-  
+  */
+
+    tableOpts["Refap"] = 
+` G1 G2 G3 G4 G5
+  F F F F F`;
+
+    tableOpts["Refap0"] = 
+    ` G1 G2 G3 G4 G5
+      F F F F F`;
+
   tableOpts["Reduc"] = 
   `I II III IV V
     15 7 F F 23
@@ -181,7 +191,7 @@
     tableOpts["Replan12x12"] = tableOpts["Repar12x12"];
 
     tableOpts["Rpbc12x12"] = 
-    ` A B C D E
+    ` G1 G2 G3 G4 G5
     F F 19 7 F
     F F F 7 19
     F F F 7 19
