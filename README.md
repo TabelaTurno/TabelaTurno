@@ -17,7 +17,6 @@ This is the second version, using reactjs library. The project is under developm
 * Menu 😬
 * More tables (with dinamic load)
 * Work with hash links (react-router)
-* Themes (with dark theme)
 * ...
 
 
