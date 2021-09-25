@@ -195,7 +195,7 @@ class Tabela2 extends React.Component {
             if (this.props.tableName.localeCompare("Refap12x12")) {
                 // eslint-disable-next-line
                 let timer2 = setTimeout(function () { // Wait 80ms and alert user
-                    alert("Aguardando definição oficial da empresa para atualizar tabela.");
+                    alert("Tabela será atualizada terça-feira 28/09/2021. 🙂👍🏼");
                     trackEvent('UserAlert', 'AlertToscoEsperandoTabelaOficial', 'label4'); 
                 
                 }, 80);
