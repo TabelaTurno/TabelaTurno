@@ -158,17 +158,19 @@ class App extends React.Component {
   render() {
     
     
-    /*if (this.props.match.params.tableUrl !== "Refap" && this.props.match.params.tableUrl !== "Refap0") {
+    if (this.props.match.params.tableUrl !== "Refap" && this.props.match.params.tableUrl !== "Refap0") {
       this.props.match.params.tableUrl = "Refap";
-    }*/
+    }
     let tableName = this.props.match.params.tableUrl || "Refap";
     let groupSelected = this.props.match.params.group;
-    //this.state.tableName = tableName;
+    
+    this.state.tableName = tableName;
     /*
     const debugdiv = {position: 'fixed', top:'10px', margin: '20px 30%', 
                       background: 'rgba(255,0,0,0.5)', zIndex: '400'};
      <div style={debugdiv}>Debug: {process.env.NODE_ENV} -- {tableName} ++ {this.state.tableName}</div>
     */
+    
     return (
       <>       
         <Notification />
