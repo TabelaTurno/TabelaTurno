@@ -164,13 +164,13 @@ class App extends React.Component {
     let tableName = this.props.match.params.tableUrl || "Refap";
     let groupSelected = this.props.match.params.group;
     
-    this.state.tableName = tableName;
+    //this.state.tableName = tableName;
     /*
     const debugdiv = {position: 'fixed', top:'10px', margin: '20px 30%', 
                       background: 'rgba(255,0,0,0.5)', zIndex: '400'};
      <div style={debugdiv}>Debug: {process.env.NODE_ENV} -- {tableName} ++ {this.state.tableName}</div>
     */
-    
+    console.log("DEFINITIVO NOME QUE VAI PARA: " + tableName);
     return (
       <>       
         <Notification />
@@ -181,7 +181,7 @@ class App extends React.Component {
          
         </div>
         <EasterEggRollout />
-        <Tabela month="7" tableName={tableName} groupSelected={groupSelected}></Tabela>
+        <Tabela month="10" tableName={tableName} groupSelected={groupSelected}></Tabela>
       </>
     );
   }
