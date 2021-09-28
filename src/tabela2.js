@@ -110,8 +110,6 @@ class Tabela2 extends React.Component {
     constructor(props) {
         super(props);
 
-        const { tableName } = this.props;
-        //this.setState({tableEra: tableName});
         this.initTableComponent();
 
     }
