@@ -111,7 +111,7 @@ class Tabela2 extends React.Component {
         super(props);
 
         const { tableName } = this.props;
-        this.setState({tableEra: tableName});
+        //this.setState({tableEra: tableName});
         this.initTableComponent();
 
     }
@@ -120,7 +120,7 @@ class Tabela2 extends React.Component {
         const tableName = this.props.tableName;
         
         tabelaGear.populateTableDate(tableName);
-        const dateIn = new Date(); // GetToday
+        const dateIn = new Date(new Date().setHours(12,0,0,0)); // GetToday
         const days = tabelaGear.getMonthScales(dateIn);
 
         let beforeFirstMonthDay = new Date(dateIn.getFullYear(), dateIn.getMonth()-1, 1);
@@ -191,15 +191,7 @@ class Tabela2 extends React.Component {
     componentDidUpdate(prevProps) {
         if (this.props.tableName !== prevProps.tableName) {
             
-            // Alert on other tables.
-            if (this.props.tableName.localeCompare("Refap12x12")) {
-                // eslint-disable-next-line
-                let timer2 = setTimeout(function () { // Wait 80ms and alert user
-                    alert("Tabela será atualizada terça-feira 28/09/2021. 🙂👍🏼");
-                    trackEvent('UserAlert', 'AlertToscoEsperandoTabelaOficial', 'label4'); 
-                
-                }, 80);
-            }
+
           this.initTableComponent();
           let extTick = this.tick.bind(this);
           extTick();

@@ -124,19 +124,21 @@ class App extends React.Component {
 
     fnShowOnRollDown();
 
-    console.log("passou pelo constructuros.");
 
     let LastTableOnSession = window.localStorage.getItem("lastTableName");
     console.log("Lasttable: " + LastTableOnSession);
     
     let tableName = this.props.match.params.tableUrl;
     console.log(this.props.match);
-    console.log("TableName " + tableName);
-    if (tableName === "" || tableName === undefined) { // If root adress, tableName came blank
+    // If root adress, tableName came blank, and..
+    // Force table Refap for avoid errors. 
+    if  (tableName !== "Refap" && tableName !== "Refap0") {
+     // if (tableName === "" || tableName === undefined) { 
 
-      tableName = LastTableOnSession || "Refap"; // Refap is a const DEFAULT
-      console.log("Mudou para padrao: " + tableName);
-      window.history.pushState(tableName, "Tabela", "/" + tableName);
+        tableName = LastTableOnSession || "Refap"; // Refap is a const DEFAULT
+        console.log("Mudou para padrao: " + tableName);
+        window.history.pushState(tableName, "TabelaTurno", "/" + tableName);
+      //}
     }
     window.localStorage.setItem("lastTableName", tableName);
     
@@ -155,8 +157,11 @@ class App extends React.Component {
 
   render() {
     
-
-    let tableName = this.props.match.params.tableUrl || "Refap12x12";
+    
+    /*if (this.props.match.params.tableUrl !== "Refap" && this.props.match.params.tableUrl !== "Refap0") {
+      this.props.match.params.tableUrl = "Refap";
+    }*/
+    let tableName = this.props.match.params.tableUrl || "Refap";
     let groupSelected = this.props.match.params.group;
     //this.state.tableName = tableName;
     /*

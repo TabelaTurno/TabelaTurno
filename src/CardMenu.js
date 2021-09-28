@@ -99,14 +99,8 @@ class CardMenu extends Component {
               <div className="bgMenuHandler"></div>
               <div className="cardMenu" ref={(element) => { this.dropdownMenu = element; }}>
                 <BtChangeTheme className="linkCard" />
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap12x12")}   to="/Refap12x12">REFAP 12x12</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap23")}      to="/Refap">REFAP 23-7-15</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap0")}       to="/Refap0">REFAP 0-8-16</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Reduc12x12")}   to="/Reduc12x12">REDUC 12x12</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Repar12x12")}   to="/Repar12x12">REPAR 12x12</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Replan12x12")}  to="/Replan12x12">REPLAN 12x12</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Rpbc12x12")}    to="/Rpbc12x12">RPBC 12x12</Link>
-                
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap23")}      to="/Refap">REFAP  23⏤7⏤15</Link>
+                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap0")}       to="/Refap0">REFAP  0⏤8⏤16</Link>
                 {buttonsForTest}
                 <div className="menuTextInfo">
                 

@@ -6,9 +6,16 @@ import './Notification.css';
 class Notification extends Component {
   constructor(props) {
     super(props);
+    // If null, then 0;
+    let incNotification = window.localStorage.getItem("notification1") || 0;
+    let showNotf = incNotification < 2 ? true : false;
     this.state = {
-        showComponent: false,
+        showComponent: showNotf,
     };
+    
+    incNotification++;
+    window.localStorage.setItem("notification1", incNotification);
+
 
   }
 
@@ -28,8 +35,8 @@ class Notification extends Component {
             <>
                 <div className="divAllForClose" onClick={this.handleClick.bind(this)}></div>
                 <div className="divNotification">
-                  <span role="img" aria-label="Emoji alert">⚠️</span><br />
-                  A nova tabela de 12 horas será adicionada ainda hoje. <br /><br />
+                  <span role="img" aria-label="Emoji alert">🗣</span><br />
+                  Qualquer divergência na tabela avise em <a href="mailto:turno.tabela@gmail.com">turno.tabela@gmail.com</a><br /><br />
                 </div>
             </>
             }
