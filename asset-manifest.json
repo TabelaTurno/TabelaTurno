@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/TabelaTurno/static/css/main.6f343b6b.chunk.css",
-    "main.js": "/TabelaTurno/static/js/main.248bccf6.chunk.js",
-    "main.js.map": "/TabelaTurno/static/js/main.248bccf6.chunk.js.map",
+    "main.js": "/TabelaTurno/static/js/main.b379ec9c.chunk.js",
+    "main.js.map": "/TabelaTurno/static/js/main.b379ec9c.chunk.js.map",
     "runtime-main.js": "/TabelaTurno/static/js/runtime-main.0541f8fc.js",
     "runtime-main.js.map": "/TabelaTurno/static/js/runtime-main.0541f8fc.js.map",
     "static/js/2.ca06efd4.chunk.js": "/TabelaTurno/static/js/2.ca06efd4.chunk.js",
     "static/js/2.ca06efd4.chunk.js.map": "/TabelaTurno/static/js/2.ca06efd4.chunk.js.map",
     "index.html": "/TabelaTurno/index.html",
-    "precache-manifest.80c04fc99a64618651748d1dfe6abbd7.js": "/TabelaTurno/precache-manifest.80c04fc99a64618651748d1dfe6abbd7.js",
+    "precache-manifest.52a550c7b57f2d994295cd1217acb8e9.js": "/TabelaTurno/precache-manifest.52a550c7b57f2d994295cd1217acb8e9.js",
     "service-worker.js": "/TabelaTurno/service-worker.js",
     "static/css/main.6f343b6b.chunk.css.map": "/TabelaTurno/static/css/main.6f343b6b.chunk.css.map",
     "static/js/2.ca06efd4.chunk.js.LICENSE.txt": "/TabelaTurno/static/js/2.ca06efd4.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.0541f8fc.js",
     "static/js/2.ca06efd4.chunk.js",
     "static/css/main.6f343b6b.chunk.css",
-    "static/js/main.248bccf6.chunk.js"
+    "static/js/main.b379ec9c.chunk.js"
   ]
 }
