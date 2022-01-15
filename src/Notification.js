@@ -10,7 +10,8 @@ class Notification extends Component {
     let incNotification = window.localStorage.getItem("notification2") || 0;
     let showNotf = incNotification < 2 ? true : false;
     this.state = {
-        showComponent: showNotf,
+        /* Remove '&& 0' to use Notification Component */
+        showComponent: showNotf && 0,
     };
     
     incNotification++;
