@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "f9f95af1cc29dacb18ccd97db3aa8fa8",
+    "revision": "2d3345ca78b56b564dcd71b852924e4e",
     "url": "/TabelaTurno/index.html"
   },
   {
-    "revision": "30b38a9bff0994779e7e",
+    "revision": "1fed64fc2b9d7539cc86",
     "url": "/TabelaTurno/static/css/main.6f343b6b.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/TabelaTurno/static/js/2.ca06efd4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "30b38a9bff0994779e7e",
-    "url": "/TabelaTurno/static/js/main.b379ec9c.chunk.js"
+    "revision": "1fed64fc2b9d7539cc86",
+    "url": "/TabelaTurno/static/js/main.91c3b73c.chunk.js"
   },
   {
     "revision": "79c3876454bd4bb5bde2",
