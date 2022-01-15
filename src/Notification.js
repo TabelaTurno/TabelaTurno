@@ -7,14 +7,14 @@ class Notification extends Component {
   constructor(props) {
     super(props);
     // If null, then 0;
-    let incNotification = window.localStorage.getItem("notification1") || 0;
+    let incNotification = window.localStorage.getItem("notification2") || 0;
     let showNotf = incNotification < 2 ? true : false;
     this.state = {
         showComponent: showNotf,
     };
     
     incNotification++;
-    window.localStorage.setItem("notification1", incNotification);
+    window.localStorage.setItem("notification2", incNotification);
 
 
   }
@@ -35,8 +35,8 @@ class Notification extends Component {
             <>
                 <div className="divAllForClose" onClick={this.handleClick.bind(this)}></div>
                 <div className="divNotification">
-                  <span role="img" aria-label="Emoji alert">🗣</span><br />
-                  Qualquer divergência na tabela avise em <a href="mailto:turno.tabela@gmail.com">turno.tabela@gmail.com</a><br /><br />
+                  <span role="img" aria-label="Emoji alert">🗣✉️</span><br />
+                  Tabela atualizada para a tabela provisória de 12h. Qualquer divergência na tabela avise em <a href="mailto:turno.tabela@gmail.com">turno.tabela@gmail.com</a><br /><br />
                 </div>
             </>
             }

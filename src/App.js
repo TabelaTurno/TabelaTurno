@@ -170,7 +170,7 @@ class App extends React.Component {
                       background: 'rgba(255,0,0,0.5)', zIndex: '400'};
      <div style={debugdiv}>Debug: {process.env.NODE_ENV} -- {tableName} ++ {this.state.tableName}</div>
     */
-    console.log("DEFINITIVO NOME QUE VAI PARA: " + tableName);
+    
     return (
       <>       
         <Notification />

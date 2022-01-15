@@ -7,6 +7,12 @@
         const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
         return Math.floor((utc2 - utc1) / _MS_PER_DAY);
     }   
+
+    function sameDay(d1, d2) {
+        return  d1.getFullYear()    === d2.getFullYear() &&
+                d1.getMonth()       === d2.getMonth()    &&
+                d1.getDate()        === d2.getDate();
+      }
     
     // eslint-disable-next-line
     function getDaysInMonth(month, year) {
@@ -150,9 +156,10 @@ var structTabela = {
         ret.day = dateIn;
         ret.groups = this.groups;
         
-        let day_transition = new Date(new Date(2021, 9, 1).setHours(12,0,0,0));
+        const day_transition1 = new Date(new Date(2021, 9, 1).setHours(12,0,0,0));
+        const day_transition2 = new Date(new Date(2022, 0, 18).setHours(12,0,0,0));
 
-        if (dateIn.getTime() === day_transition.getTime()) {
+        if (sameDay(dateIn, day_transition1)) {
             // Expction day in the table
             if (this.tableName === "Refap") {
                 ret.schedule = ['🚩23🏁', '🚩15🏁', '🚩F🏁', '🚩F🏁', '🚩7🏁'];
@@ -163,10 +170,28 @@ var structTabela = {
         } else {
             
             // If bigger than, then newold table 
-            if (dateIn.getTime() > day_transition.getTime()) { 
-                let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
-                let indexTab = diffDays % this.daysLines.length;
-                ret.schedule = this.daysLines[indexTab];
+            if (dateIn.getTime() > day_transition1.getTime()) { 
+
+                if (sameDay(dateIn, day_transition2)) {
+                    if (this.tableName === "Refap") {
+                        ret.schedule = ['🟨7🏁', '🟨19🏁', '🟨F🏁', '🟨F🏁', '🟨F🏁'];
+                        return ret; 
+                    } else {
+                        ret.schedule = ['🟨7🏁', '🟨19🏁', '🟨F🏁', '🟨F🏁', '🟨0🏁'];
+                        return ret; 
+                    }
+                               
+                } 
+
+                if (dateIn.getTime() > day_transition2.getTime()) {
+                    let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
+                    let indexTab = diffDays % this.daysLines12Transition.length;
+                    ret.schedule = this.daysLines12Transition[indexTab];
+                } else { 
+                    let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
+                    let indexTab = diffDays % this.daysLines.length;
+                    ret.schedule = this.daysLines[indexTab];
+                }
             // If less than, then 12h table
             } else {
                 
