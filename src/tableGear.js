@@ -134,6 +134,44 @@ var structTabela = {
                             ['7','19','F','F','F'],
                             ['F','19','7','F','F'],
                             ['F','F','7','19','F']],
+    
+    daysLines12N:   [['F','F','F','19','7'],
+                    ['19','F','F','F','7'],
+                    ['19','7','F','F','F'],
+                    ['19','7','F','F','F'],
+                    ['F','19','7','F','F'],
+                    ['F','19','7','F','F'],
+                    ['F','F','19','7','F'],
+                    ['F','F','19','7','F'],
+                    ['F','F','F','7','19'],
+                            ['7','F','F','F','19'],
+                            ['7','F','F','F','19'],
+                            ['19','7','F','F','F'],
+                            ['19','7','F','F','F'],
+                            ['F','19','7','F','F'],
+                            ['F','19','7','F','F'],
+                            ['F','F','7','19','F'],
+                            ['F','F','F','19','7'],
+                            ['F','F','F','19','7'],
+                            ['7','F','F','F','19'],
+                            ['7','F','F','F','19'],
+                            ['19','7','F','F','F'],
+                            ['19','7','F','F','F'],
+                            ['F','7','19','F','F'],
+                            ['F','F','19','7','F'],
+                            ['F','F','19','7','F'],
+                            ['F','F','F','19','7'],
+                            ['F','F','F','19','7'],
+                            ['7','F','F','F','19'],
+                            ['7','F','F','F','19'],
+                            ['7','19','F','F','F'],
+                            ['F','19','7','F','F'],
+                            ['F','19','7','F','F'],
+                            ['F','F','19','7','F'],
+                            ['F','F','19','7','F'],
+                            ['F','F','F','19','7']
+
+                        ],
     //tableData: tabelaRefap23,
 
     populateTableDate: function(tabelaName) {
@@ -158,6 +196,7 @@ var structTabela = {
         
         const day_transition1 = new Date(new Date(2021, 9, 1).setHours(12,0,0,0));
         const day_transition2 = new Date(new Date(2022, 0, 18).setHours(12,0,0,0));
+        const day_transition3 = new Date(new Date(2022, 1, 17).setHours(12,0,0,0));
 
         if (sameDay(dateIn, day_transition1)) {
             // Expction day in the table
@@ -166,40 +205,56 @@ var structTabela = {
             } else {
                 ret.schedule = ['🚩F🏁', '🚩16🏁', '🚩F🏁', '🚩F🏁', '🚩8🏁'];
             }
+            return ret;
 
-        } else {
-            
-            // If bigger than, then newold table 
-            if (dateIn.getTime() > day_transition1.getTime()) { 
-
-                if (sameDay(dateIn, day_transition2)) {
-                    if (this.tableName === "Refap") {
-                        ret.schedule = ['🟨7🏁', '🟨19🏁', '🟨F🏁', '🟨F🏁', '🟨F🏁'];
-                        return ret; 
-                    } else {
-                        ret.schedule = ['🟨7🏁', '🟨19🏁', '🟨F🏁', '🟨F🏁', '🟨0🏁'];
-                        return ret; 
-                    }
-                               
-                } 
-
-                if (dateIn.getTime() > day_transition2.getTime()) {
-                    let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
-                    let indexTab = diffDays % this.daysLines12Transition.length;
-                    ret.schedule = this.daysLines12Transition[indexTab];
-                } else { 
-                    let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
-                    let indexTab = diffDays % this.daysLines.length;
-                    ret.schedule = this.daysLines[indexTab];
-                }
-            // If less than, then 12h table
+        } 
+        
+        if (sameDay(dateIn, day_transition2)) {
+            if (this.tableName === "Refap") {
+                ret.schedule = ['🟨7🏁', '🟨19🏁', '🟨F🏁', '🟨F🏁', '🟨F🏁'];
+                return ret; 
             } else {
-                
-                let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
-                let indexTab = diffDays % this.daysLines12Transition.length;
-                ret.schedule = this.daysLines12Transition[indexTab];
-            } 
+                ret.schedule = ['🟨7🏁', '🟨19🏁', '🟨F🏁', '🟨F🏁', '🟨0🏁'];
+                return ret; 
+            }
+                       
         }
+            
+        if (sameDay(dateIn, day_transition3)) {
+            ret.schedule = ['🟩19🏁', '🟩7🏁', '🟩F🏁', '🟩F🏁', '🟩F🏁'];
+            return ret; 
+
+        }
+
+        if (dateIn.getTime() > day_transition3.getTime()) { 
+            
+            let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
+            let indexTab = diffDays % this.daysLines12N.length;
+            ret.schedule = this.daysLines12N[indexTab];
+            //ret.schedule = ['T', 'T', 'T', 'T', '🙌🏼'];
+            return ret;
+        }
+        
+        if (dateIn.getTime() > day_transition2.getTime()) {
+                    
+            let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
+            let indexTab = diffDays % this.daysLines12Transition.length;
+            ret.schedule = ['X', 'X', 'X', 'X', '😈'];
+            ret.schedule = this.daysLines12Transition[indexTab];
+            return ret;
+        }
+
+        if (dateIn.getTime() > day_transition1.getTime()) { 
+            let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
+            let indexTab = diffDays % this.daysLines.length;
+            ret.schedule = ['X', 'X', 'X', 'X', '🎃'];
+            ret.schedule = this.daysLines[indexTab];
+            return ret;
+        } 
+                
+        let diffDays = dateDiffInDays(this.firstDayJS, dateIn);
+        let indexTab = diffDays % this.daysLines12Transition.length;
+        ret.schedule = this.daysLines12Transition[indexTab];   
         return ret; 
         
     },
