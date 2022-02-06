@@ -78,6 +78,8 @@ class CardMenu extends Component {
       buttonsForTest = (
         <>
           <Link className="linkCard" to="/Teste4">Teste4</Link>
+          <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap23")}      to="/Refap">REFAP  23⏤7⏤15</Link>
+          <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap0")}       to="/Refap0">REFAP  0⏤8⏤16</Link>
         </>
       );
     }
@@ -99,8 +101,7 @@ class CardMenu extends Component {
               <div className="bgMenuHandler"></div>
               <div className="cardMenu" ref={(element) => { this.dropdownMenu = element; }}>
                 <BtChangeTheme className="linkCard" />
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap23")}      to="/Refap">REFAP  23⏤7⏤15</Link>
-                <Link className="linkCard" onClick={(event) => this.handleSelectTable(event, "Refap0")}       to="/Refap0">REFAP  0⏤8⏤16</Link>
+                
                 {buttonsForTest}
                 <div className="menuTextInfo">
                 
