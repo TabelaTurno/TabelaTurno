@@ -32,7 +32,7 @@ function isToday(dateToCheck) {
 const weekDay = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
 const styleClassDay = function(inProp) {
-    let redThing = ['F', 0, 6];
+    let redThing = ['F', '🟩F🏁', '🟨F🏁'];
     return redThing.includes(inProp) ? "tdF" : "";
 };
 
